@@ -1,5 +1,6 @@
 // shim for using process in browser
 
+var nextTick = require('browser-next-tick');
 var process = module.exports = {};
 var queue = [];
 var draining = false;
@@ -40,12 +41,12 @@ function drainQueue() {
     clearTimeout(timeout);
 }
 
-process.nextTick = function (fun) {
+process.nextTick = nextTick(function (fun) {
     queue.push(fun);
     if (!draining) {
         setTimeout(drainQueue, 0);
     }
-};
+});
 
 process.title = 'browser';
 process.browser = true;

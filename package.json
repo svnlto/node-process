@@ -20,5 +20,8 @@
   },
   "devDependencies": {
     "mocha": "2.2.1"
+  },
+  "dependencies": {
+    "browser-next-tick": "^1.0.0"
   }
 }
